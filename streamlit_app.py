@@ -7,4 +7,4 @@ def pagina_inicio():
     st.write("Bienvenido a la aplicación de demostración")
     st.write("Usa el menú de la izquierda para navegar")
 
-st.sidebar.tittle("Navegación")
+st.sidebar.title("Navegación")
