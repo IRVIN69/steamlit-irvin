@@ -5,27 +5,28 @@ import plotly.express as px
 def pagina_inicio():
     st.title("Página Principal")
     st.write("Bienvenido")
-    st.write("Usa el menú de la izquierda para navegar")
+    st.write("Podrás leer tu archivo excel y generar gráficos")
+    st.image("imagen/torta.gif", caption="Gráficos estadísticos", use_column_width=True)
 
 def visualizar_datos():
     st.title("Visualización de datos")
-    st.write("Carga un archivo CSV para visualizar los datos")
-    archivo_cargado = st.file_uploader("Elige un archivo CSV", type="csv")
+    st.write("Carga un archivo Excel para visualizar los datos")
+    archivo_cargado = st.file_uploader("Elige un archivo Excel", type=["xlsx", "xls"])
 
     if archivo_cargado is not None:
-        df = pd.read_csv(archivo_cargado)
-        st.write("Datos del archivo CSV:")
+        df = pd.read_excel(archivo_cargado)
+        st.write("Datos del archivo Excel:")
         st.write(df)
         st.write("Estadísticas descriptivas:")
         st.write(df.describe())
 
 def graficos_interactivos():
     st.title("Gráficos interactivos")
-    st.write("Carga un archivo CSV para crear gráficos interactivos")
-    archivo_cargado = st.file_uploader("Elige un archivo CSV", type="csv", key="2")
+    st.write("Carga un archivo Excel para crear gráficos interactivos")
+    archivo_cargado = st.file_uploader("Elige un archivo Excel", type=["xlsx", "xls"], key="2")
 
     if archivo_cargado is not None:
-        df = pd.read_csv(archivo_cargado)
+        df = pd.read_excel(archivo_cargado)
         st.write("Elige una columna para el eje X:")
         eje_x = st.selectbox("Eje X", df.columns)
         st.write("Elige una columna para el eje Y:")
